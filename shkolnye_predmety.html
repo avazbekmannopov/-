@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Школьные предметы</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7ff;
+      color: #202744;
+      line-height: 1.5;
+    }
+    header {
+      background: linear-gradient(120deg, #536dfe, #8c52ff);
+      color: white;
+      padding: 54px 20px 68px;
+      text-align: center;
+    }
+    header h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 12px; }
+    header p { font-size: 1.08rem; opacity: .95; }
+    nav {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;
+      padding: 16px; background: white; box-shadow: 0 4px 18px #25305a12;
+    }
+    nav a {
+      color: #536dfe; text-decoration: none; font-weight: 700;
+      padding: 8px 14px; border-radius: 20px;
+    }
+    nav a:hover { background: #eef0ff; }
+    main { max-width: 1100px; margin: 42px auto; padding: 0 20px; }
+    .intro { text-align: center; margin-bottom: 28px; }
+    .intro h2 { font-size: 2rem; margin-bottom: 8px; }
+    .intro p { color: #68708b; }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      border: 0; border-radius: 18px; padding: 24px; text-align: left;
+      background: white; box-shadow: 0 8px 24px #26345b0d;
+      cursor: pointer; transition: transform .2s, box-shadow .2s;
+      color: inherit; font: inherit; min-height: 190px;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 14px 30px #26345b18; }
+    .icon {
+      width: 54px; height: 54px; border-radius: 15px; display: grid;
+      place-items: center; font-size: 28px; margin-bottom: 17px;
+      background: var(--soft);
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 7px; }
+    .card p { color: #68708b; font-size: .94rem; }
+    .more { display: inline-block; margin-top: 14px; color: var(--accent); font-weight: 700; }
+    .info {
+      display: none; margin-top: 28px; padding: 24px; background: white;
+      border-radius: 18px; box-shadow: 0 8px 24px #26345b0d;
+      border-left: 5px solid #536dfe;
+    }
+    .info.show { display: block; }
+    .info h3 { margin-bottom: 8px; }
+    .info p { color: #68708b; }
+    footer {
+      margin-top: 55px; padding: 25px 20px; text-align: center;
+      background: #202744; color: #dce1ff;
+    }
+    @media (max-width: 520px) {
+      header { padding: 42px 18px 50px; }
+      main { margin-top: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="home">
+    <h1>📚 Мир школьных предметов</h1>
+    <p>Учись, открывай новое и узнавай интересное каждый день!</p>
+  </header>
+
+  <nav aria-label="Главная навигация">
+    <a href="#home">Главная</a>
+    <a href="#subjects">Предметы</a>
+    <a href="#about">О сайте</a>
+  </nav>
+
+  <main>
+    <section class="intro" id="subjects">
+      <h2>Наши школьные предметы</h2>
+      <p>Выбери предмет, чтобы узнать, что ты будешь изучать.</p>
+    </section>
+
+    <section class="grid" aria-label="Список школьных предметов">
+      <button class="card" style="--accent:#e05252;--soft:#ffeded" data-title="Русский язык" data-text="На уроках русского языка мы изучаем правила орфографии и пунктуации, учимся грамотно писать, читать и выражать свои мысли.">
+        <div class="icon">📝</div><h3>Русский язык</h3>
+        <p>Грамотная речь, правописание и правила языка.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#3976db;--soft:#eaf2ff" data-title="Математика" data-text="Математика помогает развивать логическое мышление. Мы изучаем числа, уравнения, геометрию, функции и способы решения задач.">
+        <div class="icon">➗</div><h3>Математика</h3>
+        <p>Числа, формулы, геометрия и решение задач.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#269b70;--soft:#e6f8f0" data-title="Биология" data-text="Биология — наука о живой природе. На уроках мы узнаём о растениях, животных, человеке и окружающей среде.">
+        <div class="icon">🧬</div><h3>Биология</h3>
+        <p>Изучение живых организмов и природы.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#8055cf;--soft:#f1eaff" data-title="Физика" data-text="Физика объясняет явления окружающего мира: движение, силу, энергию, свет, звук, электричество и многое другое.">
+        <div class="icon">⚛️</div><h3>Физика</h3>
+        <p>Законы природы, энергия, движение и опыты.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#d49a27;--soft:#fff5dc" data-title="География" data-text="География изучает Землю, материки, океаны, климат, страны, города и природные ресурсы нашей планеты.">
+        <div class="icon">🌍</div><h3>География</h3>
+        <p>Страны, материки, океаны и наша планета.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#bd7042;--soft:#fff0e6" data-title="История" data-text="История рассказывает о прошлом человечества, древних цивилизациях, важных событиях и выдающихся личностях.">
+        <div class="icon">🏛️</div><h3>История</h3>
+        <p>События прошлого, цивилизации и личности.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#287fba;--soft:#e6f5ff" data-title="Английский язык" data-text="На английском языке мы учим новые слова, грамматику, тренируем чтение, письмо, аудирование и разговорную речь.">
+        <div class="icon">🇬🇧</div><h3>Английский язык</h3>
+        <p>Новые слова и общение с людьми со всего мира.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#536dfe;--soft:#eceeff" data-title="Информатика" data-text="Информатика знакомит нас с компьютерами, программированием, алгоритмами, информацией и цифровыми технологиями.">
+        <div class="icon">💻</div><h3>Информатика</h3>
+        <p>Компьютеры, программирование и технологии.</p><span class="more">Подробнее →</span>
+      </button>
+      <button class="card" style="--accent:#2696a5;--soft:#e4f8fa" data-title="Химия" data-text="Химия изучает вещества, их свойства и превращения. На уроках мы знакомимся с элементами, реакциями и химическими формулами.">
+        <div class="icon">🧪</div><h3>Химия</h3>
+        <p>Вещества, элементы и химические реакции.</p><span class="more">Подробнее →</span>
+      </button>
+    </section>
+
+    <section class="info" id="info" aria-live="polite">
+      <h3 id="info-title"></h3>
+      <p id="info-text"></p>
+    </section>
+
+    <section class="intro" id="about" style="margin-top:55px">
+      <h2>Знания открывают возможности!</h2>
+      <p>Каждый школьный предмет помогает лучше понимать окружающий мир и готовит нас к будущему.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 Мир школьных предметов | Учись с интересом! 🎓</footer>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const info = document.getElementById('info');
+    const title = document.getElementById('info-title');
+    const text = document.getElementById('info-text');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        title.textContent = card.dataset.title;
+        text.textContent = card.dataset.text;
+        info.classList.add('show');
+        info.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  </script>
+</body>
+</html>
